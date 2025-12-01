@@ -1,15 +1,17 @@
-interface LoginFormProps {
-    onSwitchToLogin: () => void
-}
+import { Link } from "react-router-dom"
+import AuthLayout from "../layouts/AuthLayout"
 
+const footer = (
+    <p className="text-center text-sm p-4 text-indigo-700">
+        <Link to="/register" className="font-semibold underline cursor-pointer hover:text-indigo-900">
+            Register for an account
+        </Link>
+    </p>
+);
 
-export default function LoginForm({ onSwitchToLogin }: LoginFormProps) {
+export default function LoginForm() {
     return (
-        <div className="bg-white/90 backdrop-blur p-8 rounded-xl shadow-xl w-full max-w-sm">
-            <h1 className="text-2xl font-bold mb-6 text-center text-rose-900">
-                Game Night Login
-            </h1>
-
+        <AuthLayout title="Game Night Login" footer={footer}>
             <div className="mb-4">
                 <label className="block text-sm font-medium text-rose-900 mb-1">
                     Email
@@ -38,9 +40,6 @@ export default function LoginForm({ onSwitchToLogin }: LoginFormProps) {
             <button className="w-full py-2 bg-rose-700 hover:bg-rose-800 text-white font-semibold rounded-lg transition">
                 Log In
             </button>
-            <p className="text-center text-sm p-4 text-indigo-700 cursor-pointer hover:text-indigo-900" onClick={onSwitchToLogin}>
-                Register for an account
-            </p>
-        </div>
+        </AuthLayout>
     );
 }
